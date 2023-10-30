@@ -16,12 +16,12 @@ spring:
     oauth2:
       resourceserver:
         jwt:
-          issuer-uri: https://issuer.zitadel.ch
-          jwk-set-uri: https://api.zitadel.ch/oauth/v2/keys
+          issuer-uri: http://localhost:8080
+          jwk-set-uri: http://localhost:8080/oauth/v2/keys
         opaquetoken:
-          introspection-uri: https://api.zitadel.ch/oauth/v2/introspect
-          client-id: '<the-api-client-id>'
-          client-secret: '<the-api-client-secret>'
+          introspection-uri: http://localhost:8080/oauth/v2/introspect
+          client-id: '238032547420897282@project1'
+          client-secret: 'ZWaiyBwIQvcl0xY6qLwebIhp8sq1aVyLn07dAcHdwmcc7TYqIyftGLLWAkyi7wGj'
 
 logging:
   level:

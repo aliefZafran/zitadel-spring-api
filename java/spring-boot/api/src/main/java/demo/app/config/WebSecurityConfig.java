@@ -6,6 +6,9 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import org.springframework.web.filter.CorsFilter;
 
 /**
  * Configuration applied on all web endpoints defined for this
@@ -33,6 +36,7 @@ class WebSecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
         http.csrf().disable();
+        http.cors();
 
         http.sessionManagement(smc -> {
             smc.sessionCreationPolicy(SessionCreationPolicy.STATELESS);
@@ -48,6 +52,15 @@ class WebSecurityConfig {
         http.oauth2ResourceServer().opaqueToken();
 
         return http.build();
+    }
+    @Bean
+    public CorsFilter corsFilter() {
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        CorsConfiguration config = new CorsConfiguration();
+        config.applyPermitDefaultValues();
+        config.addAllowedOrigin("http://localhost:3000"); // Replace with your React app's URL
+        source.registerCorsConfiguration("/**", config);
+        return new CorsFilter(source);
     }
 
 }
