@@ -20,8 +20,8 @@ spring:
           jwk-set-uri: http://localhost:8080/oauth/v2/keys
         opaquetoken:
           introspection-uri: http://localhost:8080/oauth/v2/introspect
-          client-id: '238032547420897282@project1'
-          client-secret: 'ZWaiyBwIQvcl0xY6qLwebIhp8sq1aVyLn07dAcHdwmcc7TYqIyftGLLWAkyi7wGj'
+          client-id: 'your-own-client-api' # take note
+          client-secret: 'your-own-client-secret' # take note
 
 logging:
   level:
